@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import React, { useState } from 'react';
 
 function App() {
+
+  const [mode , setMode]=useState("light");
+  const removesc =()=>{
+    document.body.classList.remove("bg-primary")
+    document.body.classList.remove("bg-success")
+    document.body.classList.remove("bg-warning")
+    document.body.classList.remove("bg-danger")
+    document.body.classList.remove("bg-dark")
+  }
+  const toggleMode =(cls)=>{
+    removesc()
+    document.body.classList.add("bg-"+ cls)
+    if (mode === "dark") {
+      setMode("light")
+      document.body.style.backgroundColor='white'
+    }else{
+      setMode("dark")
+      document.body.style.backgroundColor='black'
+    }
+    
+   
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Navbar mode={mode} toggleMode={toggleMode}/>
+    </>
+  )
 }
 
 export default App;
