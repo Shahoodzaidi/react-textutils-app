@@ -5,7 +5,6 @@ export default function Navbar(props) {
 
   const [text, setText]= useState("Change your text..!!");
   let btn = document.querySelectorAll(".btn");
-
    if(text.length===0){
 
   btn.forEach((r)=>{
